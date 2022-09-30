@@ -53,7 +53,8 @@ app.put('/api/moods/:id', (req, res) => {
   const id = req.body.id;
   let note = req.body.newMood;
   let rating = req.body.newRating;
-  editMood(id, note, rating).then(() => res.status(200).json(moods)).catch(err => console.log(err))
+  let newMood = {id, note, rating}
+  editMood(id, note, rating).then(() => res.status(200).json(newMood)).catch(err => console.log(err))
 });
 
 
