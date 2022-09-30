@@ -28,7 +28,9 @@ let moods = [
   }
 ];
 
-
+app.get("/", (req, res) => {
+  res.send(res.data)
+});
 
 app.get('/api/moods', (req, res) => {
   getMoods().then(result => { res.send(result)}).catch(err => console.log(err))

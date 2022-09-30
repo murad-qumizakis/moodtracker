@@ -1,17 +1,14 @@
 import mysql from 'mysql2';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const pool = mysql.createPool({
-    host: '127.0.0.1',
-   
-    user: "root",
-    database: "moodtracker",
-    password: "Murad19112001!"
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    database: process.env.MYSQLDATABASE,
+    password: process.env.MYSQLPASSWORD,
+    port: process.env.MYSQLPORT
 }).promise();
 
-// process.env.MYSQL_HOST,
-// process.env.MYSQL_USER,
-// process.env.MYSQL_DATABASE,
-// process.env.MYSQL_PASSWORD,
 
 export async function getMoods() {
     const [result] =  await pool.query("SELECT * FROM moods");
