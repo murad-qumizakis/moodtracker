@@ -5,6 +5,7 @@ import { getMoods, deleteMood, addMood, editMood } from './database.js';
 
 const app = express();
 app.use(express.json());
+app.use(express.static("client"))
 app.use(bodyParser.urlencoded({ extended: false }));
 
 let moods = [
@@ -30,6 +31,7 @@ let moods = [
 
 app.get("/", (req, res) => {
   res.send(res.data)
+  
 });
 
 app.get('/api/moods', (req, res) => {
